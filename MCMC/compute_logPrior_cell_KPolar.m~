@@ -1,0 +1,29 @@
+function logPrior_cell = compute_logPrior_cell_KPolar(Prior_Param, theta_cellk)
+% Reminder of the size of parameters
+%Prior_Param.velocity_mean(1,2)
+%Prior_Param.velocity_sd(1,2)
+
+% % Improper Prior
+% % velocity components: constant=1 <=> Uni(-infty, infty)constant
+
+% % diffusivity components: prop 1/detK^2 [Actually performed badly compared with the Uni one!]
+if Prior_Param.PriorType == 1
+    % Jeffrey's Prior
+    % Fields_cell(3:5) = [K11, K22, K12]
+    detK = (theta_cellk(7)*theta_cellk(8))^2;
+    
+    % Jeffrey's Prior
+    logPrior_cell = -0.5*(2+1).*log(detK);
+
+elseif Prior_Param.PriorType == 2
+    % Flat Prior for diffusivity
+    sigmas = theta_cellk(7:8);
+    
+    if any(sigmas < sqrt(10)) || any(sigmas > 200)
+        logPrior_cell = -1/(eps*10);
+    else
+        logPrior_cell = 0;
+    end
+end
+
+end

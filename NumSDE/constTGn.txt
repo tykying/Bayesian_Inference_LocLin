@@ -1,0 +1,144 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2016 The MathWorks, Inc.
+                   R2016b (9.1.0.441655) 64-bit (glnxa64)
+                             September 7, 2016
+
+ 
+To get started, type one of these: helpwin, helpdesk, or demo.
+For product information, visit www.mathworks.com.
+ 
+Starting parallel pool (parpool) using the 'local' profile ... connected to 16 workers.
+SDE time step = 1
+SDE time step = 1
+SDE time step = 1
+SDE time step = 1
+SDE time step = 1
+SDE time step = 1
+SDE time step = 1
+SDE time step = 1
+SDE time step = 101
+SDE time step = 101
+SDE time step = 101
+SDE time step = 101
+SDE time step = 101
+SDE time step = 101
+SDE time step = 101
+SDE time step = 101
+SDE time step = 201
+SDE time step = 201
+SDE time step = 201
+SDE time step = 201
+SDE time step = 201
+SDE time step = 201
+SDE time step = 201
+SDE time step = 201
+SDE time step = 301
+SDE time step = 301
+SDE time step = 301
+SDE time step = 301
+SDE time step = 301
+SDE time step = 301
+SDE time step = 301
+SDE time step = 301
+SDE time step = 401
+SDE time step = 401
+SDE time step = 401
+SDE time step = 401
+SDE time step = 401
+SDE time step = 401
+SDE time step = 401
+SDE time step = 401
+SDE time step = 501
+SDE time step = 501
+SDE time step = 501
+SDE time step = 501
+SDE time step = 501
+SDE time step = 501
+SDE time step = 501
+SDE time step = 501
+SDE time step = 601
+SDE time step = 601
+SDE time step = 601
+SDE time step = 601
+SDE time step = 601
+SDE time step = 601
+SDE time step = 601
+SDE time step = 701
+SDE time step = 701
+SDE time step = 601
+SDE time step = 701
+SDE time step = 701
+SDE time step = 701
+SDE time step = 701
+SDE time step = 701
+SDE time step = 801
+SDE time step = 801
+SDE time step = 801
+SDE time step = 701
+SDE time step = 801
+SDE time step = 801
+SDE time step = 801
+SDE time step = 801
+SDE time step = 901
+SDE time step = 901
+SDE time step = 901
+SDE time step = 801
+SDE time step = 901
+SDE time step = 901
+SDE time step = 901
+SDE time step = 901
+SDE time step = 1001
+SDE time step = 1001
+SDE time step = 1001
+SDE time step = 1001
+SDE time step = 1001
+SDE time step = 1001
+SDE time step = 901
+SDE time step = 1001
+SDE time step = 1001
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe0.001_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe0.01_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe0.1_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe1_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe10_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe100_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe1000_Npart65536_TempIntv16_h1_nReal1.mat
+
+
+traj_fullpath =
+
+/data/tying/NumSDE/taylor_green_noisy/PART_TRAJ/traj_taylor_green_noisy_const_Pe10000_Npart65536_TempIntv16_h1_nReal1.mat
+
+{Undefined function or variable 'stop'.
+
+Error in Script_generate_particle_trajectories (line 145)
+stop
+} 

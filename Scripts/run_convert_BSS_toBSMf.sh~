@@ -1,0 +1,9 @@
+#!/bin/bash
+#SIV=32
+#echo \"${SIV}\"
+#nohup matlab -nodisplay -nodesktop -r "SIv_in=${SIV}; Diffusivity_inference_from_MCMC" &> ./zkappa_$SIV.txt &
+
+nohup matlab -nodisplay -nodesktop -r "SIv_in=[1 2]; Script_Convert_BSS_to_BayesSampleMeanFine" &> ./zkappa12.txt &
+nohup matlab -nodisplay -nodesktop -r "SIv_in=[4 8]; Script_Convert_BSS_to_BayesSampleMeanFine" &> ./zkappa48.txt &
+nohup matlab -nodisplay -nodesktop -r "SIv_in=[16 32]; Script_Convert_BSS_to_BayesSampleMeanFine" &> ./zkappa1632.txt &
+nohup matlab -nodisplay -nodesktop -r "SIv_in=[64]; Script_Convert_BSS_to_BayesSampleMeanFine" &> ./zkappa64.txt &

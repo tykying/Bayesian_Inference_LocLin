@@ -1,0 +1,88 @@
+function TransitStat_Part = ComputeTransitStat_PartBased(TrajData_Binned)
+%% Term Explained 
+% ArrivalTime: time at which the particle transits to a new cell (in terms of i_t)
+% ResideIntv: time interval for a particle before the next transition (in terms of i_t)
+
+% Time line:
+% time:     |-t1-||-t2-||-t3-||-t4-|
+% absPos:   |-x1-||-x2-||-x3-||-x4-|
+% diffPos:  X----u1----u2----u3----X
+
+% CellInd:  |-C1-||-C1-||-C2-||-C3-|
+% -> ResideIntv in C1 = 2; ArrivalTime at C1 = 1;
+% -> ResideIntv in C2 = 1; ArrivalTime at C2 = 3;
+
+% Remark:
+% Initial position is COUNTED as the first arrival
+%% Computation
+%     x = TrajData_Binned.x;
+%     y = TrajData_Binned.y;
+%     ts_list = TrajData_Binned.ts_list;
+    GridInd = TrajData_Binned.GridInd;
+%     alphax = TrajData_Binned.alphax;
+%     alphay = TrajData_Binned.alphay;
+    
+    % Initialise the struct for output
+    TransitStat_Part = struct('ArrivalTime', [], 'ResideIntv', [], 'GridInd_List', []);
+    
+    [Nts, nparticles] = size(GridInd);
+    
+    % Identify when transition occurs
+    diff_GridInd = diff(GridInd, 1);
+    
+    % Consider Individual Particles
+    for part = 1: nparticles               
+        Transit_TF = (diff_GridInd(:, part) ~= 0);
+        NTransit = sum(Transit_TF);
+        
+        % +1: Include initial residence
+        ArrivalTime = zeros(NTransit+1, 1);
+        ResideIntv = zeros(NTransit+1, 1);
+        GridInd_List = zeros(NTransit+1, 1);
+        
+        % Initial residence
+        ArrivalTime(1) = 1;
+        GridInd_List(1) = GridInd(1, part);     
+        
+        % Intermediate residence
+        ResideIntv_counter = 1;
+        NTransit_counter = 1;
+        
+        % Assistance:
+        % x(i_t) at t_i
+        % diffx(i_t) at 1/2*((t_i) + (t_{i+1}));     (after t_i)
+        % diffx(i_t-1) at 1/2*((t_{i-1}) + (t_{i})); (before t_i)
+        
+        % Slow but safe method:
+        % Scan through diff_GridInd at each time
+        for i_t = 2: Nts
+            GridJump = diff_GridInd((i_t-1), part);
+            if (GridJump ~= 0)
+                NTransit_counter = NTransit_counter + 1;   % For debugging
+                
+                % Fortran Implementation: Data-structure = List
+                ArrivalTime(NTransit_counter) = i_t;
+                ResideIntv(NTransit_counter-1) = ResideIntv_counter;
+                
+                GridInd_List(NTransit_counter) = GridInd(i_t, part);
+                
+                ResideIntv_counter = 1;     
+            else
+                ResideIntv_counter = ResideIntv_counter + 1;
+            end
+        end
+        assert(NTransit_counter == (NTransit+1));
+        
+        % Final residence
+        ResideIntv(end) = ResideIntv_counter;
+        
+        % For Debugging
+        assert(sum(ResideIntv) == Nts);
+        
+        % Storage
+        TransitStat_Part(part).ArrivalTime = ArrivalTime;
+        TransitStat_Part(part).ResideIntv = ResideIntv;
+        TransitStat_Part(part).GridInd_List = GridInd_List;
+    end
+    
+end

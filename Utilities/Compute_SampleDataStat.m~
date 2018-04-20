@@ -1,0 +1,37 @@
+function SampleDataStat = Compute_SampleDataStat(SampleData)
+
+SampleDataFields = fieldnames(SampleData(1));
+N_Fields = numel(SampleDataFields);
+
+N_Samples = numel(SampleData);
+Ncell_SpDis = size(SampleData(1).(SampleDataFields{1}), 1);
+
+
+% Initialise SampleDataStat
+SampleDataStat = struct;
+for i = 1:numel(SampleDataFields)   
+    SampleDataStat.(SampleDataFields{i}).Mean = zeros(size(SampleData(1).(SampleDataFields{i})));
+    SampleDataStat.(SampleDataFields{i}).Vari = zeros(size(SampleData(1).(SampleDataFields{i})));
+    SampleDataStat.(SampleDataFields{i}).Skew = zeros(size(SampleData(1).(SampleDataFields{i})));
+    SampleDataStat.(SampleDataFields{i}).Kurt = zeros(size(SampleData(1).(SampleDataFields{i})));    
+end
+
+% Compute SampleDataStat
+for cell = 1 : Ncell_SpDis
+    for i = 1 : N_Fields
+        % Obtain the correct data structure for the Data
+        [RawDataNCell, RawDataDim] = size(SampleData(1).(SampleDataFields{i}));  % First dimension = number of cells
+        
+        CellRawData = zeros(N_Samples, RawDataDim);
+        for Sample = 1:N_Samples
+            CellRawData(Sample, :) = SampleData(Sample).(SampleDataFields{i})(cell, :);
+        end
+        
+        SampleDataStat.(SampleDataFields{i}).Mean(cell,:) = mean(CellRawData);
+        SampleDataStat.(SampleDataFields{i}).Vari(cell,:) = var(CellRawData);
+        SampleDataStat.(SampleDataFields{i}).Skew(cell,:) = skewness(CellRawData);
+        SampleDataStat.(SampleDataFields{i}).Kurt(cell,:) = kurtosis(CellRawData);        
+    end
+end
+
+end

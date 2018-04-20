@@ -1,0 +1,36 @@
+#!/bin/bash
+#SIV=32
+#echo \"${SIV}\"
+#nohup matlab -nodisplay -nodesktop -r "SIv_in=${SIV}; Diffusivity_inference_from_MCMC" &> ./zkappa_$SIV.txt &
+
+#SIV=1
+#echo \"${SIV}\"
+#nohup matlab -nodisplay -nodesktop -r "SIv_in=${SIV}; Diffusivity_inference_from_MCMC" &> ./zkappa_$SIV.txt &
+
+#SIV=64
+#echo \"${SIV}\"
+#nohup matlab -nodisplay -nodesktop -r "SIv_in=${SIV}; Diffusivity_inference_from_MCMC" &> ./zkappa_$SIV.txt &
+
+
+#nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [4, 32, 64, 96]; Run_diffusivity_Inference" &> ./zkappa_160.txt &
+nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [1, 128, 144, 80, 112, 4, ]; RunProfile ='QGM2_DStemp'; Run_diffusivity_Inference" &> ./zkappa_all_1.txt &
+nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [64, 32, 16, 96, 48, 160, 8, 2, ]; RunProfile ='QGM2_DStemp'; Run_diffusivity_Inference" &> ./zkappa_all_2.txt &
+
+
+#nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [160, 128, 64, 16, 1]; RunProfile ='QGM2_DStemp'; Run_diffusivity_Inference" &> ./zkappa_quick.txt &
+
+
+#nohup matlab -nodisplay -nodesktop -r "RunProfile ='tg_w_mean_TC_pwc_vs_SIv'; Run_diffusivity_Inference" &> ./zkappa_tgm_SIV.txt &
+
+#nohup matlab -nodisplay -nodesktop -r "RunProfile ='tg_w_mean_TC_pwc_vs_Npart'; Run_diffusivity_Inference" &> ./zkappa_tgm_Npart.txt &
+
+
+#nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [144:-32:16]; Run_diffusivity_Inference" &> ./zkappa_144.txt &
+#nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [64]; Run_diffusivity_Inference" &> ./zkappa_64.txt &
+#nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [16]; Run_diffusivity_Inference" &> ./zkappa_16.txt &
+#nohup matlab -nodisplay -nodesktop -r "SamplingInterval_vis_List = [1]; Run_diffusivity_Inference" &> ./zkappa_1.txt &
+#nohup matlab -nodisplay -nodesktop -r "SIv_in=[1]; Binned_autocorrelation" &> ./autocorr_1.txt &
+
+#nohup matlab -nodisplay -nodesktop -r "kappa_Profile = 'sinusoidal'; veloc_Profile = 'childress_soward'; Script_generate_particle_trajectories" &> ./sinCS.txt &
+#nohup matlab -nodisplay -nodesktop -r "kappa_Profile = 'const'; veloc_Profile = 'taylor_green_noisy'; Script_generate_particle_trajectories" &> ./constTGn.txt &
+
